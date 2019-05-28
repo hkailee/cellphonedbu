@@ -15,7 +15,6 @@ def build_clusters(meta: pd.DataFrame, counts: pd.DataFrame) -> dict:
     Builds a cluster structure and calculates the means values
     """
     cluster_names = meta['cell_type'].drop_duplicates().tolist()
-    clusters = {'names': cluster_names, 'counts': {}, 'means': {}}
 
     def mstats_winsorizer(s):
         return mstats.winsorize(s, limits=[0, 0.05])
@@ -32,9 +31,7 @@ def build_clusters(meta: pd.DataFrame, counts: pd.DataFrame) -> dict:
         # return data[(data.values >= q_05) & (data.values <= q_95)]
         return data[(data.values >= q_75 + step)]
 
-
-    cluster_counts = {}
-    cluster_means = {}
+    winsorized_cluster_counts = pd.DataFrame()
 
     for cluster_name in cluster_names:
         cells = meta[meta['cell_type'] == cluster_name].index
@@ -48,10 +45,10 @@ def build_clusters(meta: pd.DataFrame, counts: pd.DataFrame) -> dict:
                                         index=cluster_count.index, columns=cluster_count.columns)
         winsorized_cluster_count.to_csv('/Volumes/Samsung_T3/SIgN/cellphonedbv/out/WinsorizeSampleList/' + \
                                                                 cluster_name + '_winsorized.csv')
-        cluster_counts[cluster_name] = winsorized_cluster_count
+        winsorized_cluster_counts.append(winsorized_cluster_count)
 
-    clusters['counts'] = cluster_counts
-    print(clusters)
-    return clusters
+    # clusters['counts'] = cluster_counts
+    print(winsorized_cluster_counts)
+    return winsorized_cluster_counts
 
 

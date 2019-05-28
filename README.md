@@ -7,4 +7,4 @@ Please refer to [existing repository] (https://github.com/Teichlab/cellphonedb) 
 
 Utility tools included to date:
 
-1. Winsorizing the sample data of each cluster at limit of 0.05 (upper only). 
+1. Winsorizing the sample data of each cluster at limit of 0.05 (upper only).
