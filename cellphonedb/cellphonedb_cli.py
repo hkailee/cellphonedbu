@@ -13,11 +13,6 @@ def method():
     pass
 
 
-@cli.group()
-def query():
-    pass
-
-
 method.add_command(method_terminal_commands.statistical_analysis)
 
 if __name__ == '__main__':
