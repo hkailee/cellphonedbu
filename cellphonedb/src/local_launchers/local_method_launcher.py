@@ -44,7 +44,7 @@ class LocalMethodLauncher(object):
                 debug_seed,
                 result_precision)
 
-        winsorized.to_csv('{}/{}'.format(output_path, winsorized_result_name), sep='\t', index=False)
+        winsorized.to_csv('{}/{}'.format(output_path, winsorized_result_name), sep='\t', index=True)
             
 
     @staticmethod

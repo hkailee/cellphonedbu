@@ -22,8 +22,7 @@ def call(meta: pd.DataFrame,
 
     core_logger.info('Running Winsorization')
     
-    winsorized_counts = cpdb_statistical_analysis_helper.build_clusters(meta, counts)
-
+    winsorized_counts = cpdb_statistical_analysis_helper.build_clusters(meta, counts, threads)
 
     return build_results(winsorized_counts, result_precision)
 
