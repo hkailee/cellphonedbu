@@ -12,8 +12,7 @@ def cli():
 def method():
     pass
 
-
-method.add_command(method_terminal_commands.statistical_analysis)
+method.add_command(method_terminal_commands.winsorizer)
 
 if __name__ == '__main__':
     cli()

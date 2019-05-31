@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='CellPhoneDB',
+    name='CellPhoneDBu',
     author='Lee Hong Kai',
     author_email='leehongkai@gmail.com',
-    version='1.1.0',
+    version='1.1.1.1',
     long_description=__doc__,
     packages=find_packages(),
     include_package_data=True,

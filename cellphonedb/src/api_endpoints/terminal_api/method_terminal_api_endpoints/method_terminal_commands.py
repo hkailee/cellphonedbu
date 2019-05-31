@@ -23,7 +23,7 @@ from cellphonedb.src.local_launchers.local_method_launcher import LocalMethodLau
 @click.option('--debug-seed', default='-1', help='Debug random seed 0 for disable it. >=0 to set it [-1]')
 @click.option('--threads', default=4, help='Max of threads to process the data [4]')
 @click.option('--verbose/--quiet', default=True, help='Print or hide cellphonedb logs [verbose]')
-def statistical_analysis(meta_filename: str,
+def winsorizer(meta_filename: str,
                          counts_filename: str,
                          project_name: str,
                          result_precision: int,
