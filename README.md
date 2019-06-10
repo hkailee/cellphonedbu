@@ -5,7 +5,7 @@ CellPhoneDB Utility Tools improve input data for CellPhoneDB - a publicly availa
 
 Please refer to [existing cellphonedb repository](https://github.com/Teichlab/cellphonedb) on how to use the program. 
 
-Utility tools included to date:
+Utility tools included in the CellPhonedbU to date:
 
 1. Winsorizing the count data of each cluster at limit of 0.05 (upper only)
 2. Log2-transforming all the count data
