@@ -59,3 +59,6 @@ Set output path
 mkdir custom_folder
 cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --output-path=custom_folder
 ```
+
+##[DASK] (https://dask.org/) schedulers workflow (auto parallel jobs queue) is incorporated
+![] (img/grid_search_schedule.gif)
