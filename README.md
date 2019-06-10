@@ -25,7 +25,7 @@ python -m venv your-venv
 source your-venv/bin/activate
 ```
 
-3. Install cellphonedb
+3. Install cellphonedbu
 ```shell
 pip install cellphonedbu
 ```
@@ -47,15 +47,15 @@ pip install cellphonedbu
 
 Set number of iterations and threads
 ```shell
-cellphonedb method winsorizer yourmetafile.txt yourcountsfile.txt --log2-transformed True
+cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --log2-transformed True
 ```
 Set project subfolder
 ```shell
-cellphonedb method winsorizer yourmetafile.txt yourcountsfile.txt --project-name=new_project
+cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --project-name=new_project
 ```
 
 Set output path
 ```shell
 mkdir custom_folder
-cellphonedb method winsorizer yourmetafile.txt yourcountsfile.txt --output-path=custom_folder
+cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --output-path=custom_folder
 ```
