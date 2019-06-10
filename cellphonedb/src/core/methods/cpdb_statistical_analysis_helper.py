@@ -8,7 +8,7 @@ from scipy.stats import mstats
 from cellphonedb.src.core.core_logger import core_logger
 
 
-def build_clusters(meta: pd.DataFrame, counts: pd.DataFrame, threads: int) -> dict:
+def log2tf_winsorizer(meta: pd.DataFrame, counts: pd.DataFrame, log2_transform: bool, threads: int) -> dict:
     """
     Builds a cluster structure and calculates the means values
     """
@@ -32,9 +32,13 @@ def build_clusters(meta: pd.DataFrame, counts: pd.DataFrame, threads: int) -> di
 ###########
 
     # Winsorizer function
-    def winsorizer_process(cluster_count):
+    def winsorizer_process(cluster_count, log2_transform):
 
         winsorized_cluster_count_array = cluster_count.apply(mstats_winsorizer, axis=1)
+        
+        if log2_transform:
+            winsorized_cluster_count_array = winsorized_cluster_count_array[:].apply(
+                                                    lambda x: np.log2(x + 1))
 
         return pd.DataFrame.from_records(winsorized_cluster_count_array, \
                                       index=cluster_count.index, columns=cluster_count.columns)
@@ -48,7 +52,7 @@ def build_clusters(meta: pd.DataFrame, counts: pd.DataFrame, threads: int) -> di
 
     # Starting DASK client and submitting parallel processing jobs
     client = Client()
-    L = [client.submit(winsorizer_process, future) for future in chunks]
+    L = [client.submit(winsorizer_process, future, log2_transform) for future in chunks]
     future = client.submit(df_concatenate, L)
     result = future.result()
 

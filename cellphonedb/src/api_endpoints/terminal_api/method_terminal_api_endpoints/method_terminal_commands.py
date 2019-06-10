@@ -16,6 +16,7 @@ from cellphonedb.src.local_launchers.local_method_launcher import LocalMethodLau
 @click.argument('meta-filename')
 @click.argument('counts-filename')
 @click.option('--project-name', default='', help='Name of the project. It creates a subfolder in output folder')
+@click.option('--log2-transform', default=True, help='log2 transformed all data in counts')
 @click.option('--result-precision', default='3', help='Number of decimal digits in results [3]')
 @click.option('--output-path', default='',
               help='Directory where the results will be allocated (the directory must exist) [out]')
@@ -24,15 +25,16 @@ from cellphonedb.src.local_launchers.local_method_launcher import LocalMethodLau
 @click.option('--threads', default=4, help='Max of threads to process the data [4]')
 @click.option('--verbose/--quiet', default=True, help='Print or hide cellphonedb logs [verbose]')
 def winsorizer(meta_filename: str,
-                         counts_filename: str,
-                         project_name: str,
-                         result_precision: int,
-                         output_path: str,
-                         winsorized_result_name: str,
-                         debug_seed: int,
-                         threads: int,
-                         verbose: bool,
-                         ) -> None:
+               counts_filename: str,
+               project_name: str,
+               log2_transform: bool,
+               result_precision: int,
+               output_path: str,
+               winsorized_result_name: str,
+               debug_seed: int,
+               threads: int,
+               verbose: bool,
+               ) -> None:
     try:
         LocalMethodLauncher(cpdb_app.create_app(verbose)). \
             cpdb_statistical_analysis_local_method_launcher(meta_filename,
@@ -42,7 +44,8 @@ def winsorizer(meta_filename: str,
                                                             winsorized_result_name,
                                                             debug_seed,
                                                             threads,
-                                                            result_precision
+                                                            result_precision,
+                                                            log2_transform
                                                             )
     except (ReadFileException, ParseMetaException, ParseCountsException, ThresholdValueException,
             AllCountsFilteredException) as e:

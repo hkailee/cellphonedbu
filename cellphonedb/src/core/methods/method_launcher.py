@@ -23,7 +23,8 @@ class MethodLauncher():
                                            counts: pd.DataFrame,
                                            threads: int,
                                            debug_seed: int,
-                                           result_precision: int
+                                           result_precision: int,
+                                           log2_transform: bool
                                            ) -> (pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame):
 
         if threads < 1:
@@ -39,7 +40,8 @@ class MethodLauncher():
                                                   counts,
                                                   threads,
                                                   debug_seed,
-                                                  result_precision)
+                                                  result_precision,
+                                                  log2_transform)
 
         return winsorized
 

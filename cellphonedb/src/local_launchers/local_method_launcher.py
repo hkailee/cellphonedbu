@@ -27,7 +27,8 @@ class LocalMethodLauncher(object):
                                                         winsorized_result_name: str = 'winsorized_count.txt',
                                                         debug_seed: int = -1,
                                                         threads: int = -1,
-                                                        result_precision: int = 3) -> None:
+                                                        result_precision: int = 3,
+                                                        log2_transform: bool = True) -> None:
         output_path = self._set_paths(output_path, project_name)
 
         debug_seed = int(debug_seed)
@@ -42,7 +43,8 @@ class LocalMethodLauncher(object):
                 counts,
                 threads,
                 debug_seed,
-                result_precision)
+                result_precision,
+                log2_transform)
 
         winsorized.to_csv('{}/{}'.format(output_path, winsorized_result_name), sep='\t', index=True)
             
