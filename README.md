@@ -47,17 +47,17 @@ pip install cellphonedbu
 
 Set number of iterations and threads
 ```shell
-cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --log2-transformed True
+$ cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --log2-transformed True
 ```
 Set project subfolder
 ```shell
-cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --project-name=new_project
+$ cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --project-name=new_project
 ```
 
 Set output path
 ```shell
-mkdir custom_folder
-cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --output-path=custom_folder
+$ mkdir custom_folder
+$ cellphonedbu method winsorizer yourmetafile.txt yourcountsfile.txt --output-path=custom_folder
 ```
 
 **[DASK](https://dask.org/) schedulers workflow (auto parallel jobs queue) is incorporated**  
