@@ -20,7 +20,7 @@ setup(
     install_requires=[
         'click>=6.7,<6.7.99',
         'dask==1.1.4',
-        'numpy==1.16.3',
+        'numpy==1.22.0',
         'pandas>=0.23,<0.23.99',
         'PyYAML>=3.13,<3.13.99',
         'scipy==1.2.1',
